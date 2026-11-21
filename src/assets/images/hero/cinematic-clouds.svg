@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 600" width="2560" height="600" fill="none">
+  <defs>
+    <filter id="cloudFilter1" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="5" result="noise" seed="42" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="65" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+      <feGaussianBlur stdDeviation="14" result="blurred" />
+      <feComposite operator="in" in="blurred" in2="SourceGraphic" />
+    </filter>
+    <filter id="cloudFilter2" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="4" result="noise" seed="99" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="45" xChannelSelector="R" yChannelSelector="B" result="displaced" />
+      <feGaussianBlur stdDeviation="10" />
+    </filter>
+    <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.85" />
+      <stop offset="40%" stop-color="#F1F5F9" stop-opacity="0.6" />
+      <stop offset="75%" stop-color="#E2E8F0" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#CBD5E1" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="sunsetGlow" x1="0%" y1="0%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#FFD6A5" stop-opacity="0.4" />
+      <stop offset="50%" stop-color="#FFF" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#E0E7FF" stop-opacity="0.3" />
+    </linearGradient>
+  </defs>
+
+  <!-- Volumetric Cloud Clusters -->
+  <g filter="url(#cloudFilter1)">
+    <ellipse cx="320" cy="180" rx="260" ry="90" fill="url(#cloudGrad)" />
+    <ellipse cx="580" cy="150" rx="320" ry="110" fill="url(#sunsetGlow)" />
+    <ellipse cx="940" cy="200" rx="280" ry="85" fill="url(#cloudGrad)" />
+    <ellipse cx="1320" cy="160" rx="340" ry="120" fill="url(#sunsetGlow)" />
+    <ellipse cx="1740" cy="210" rx="310" ry="95" fill="url(#cloudGrad)" />
+    <ellipse cx="2120" cy="170" rx="300" ry="105" fill="url(#sunsetGlow)" />
+    <ellipse cx="2420" cy="190" rx="240" ry="80" fill="url(#cloudGrad)" />
+  </g>
+
+  <!-- Secondary Wispy Cloud Band -->
+  <g filter="url(#cloudFilter2)" opacity="0.65">
+    <ellipse cx="180" cy="120" rx="190" ry="60" fill="#FFFFFF" />
+    <ellipse cx="740" cy="110" rx="260" ry="70" fill="url(#sunsetGlow)" />
+    <ellipse cx="1150" cy="130" rx="220" ry="55" fill="#FFFFFF" />
+    <ellipse cx="1580" cy="100" rx="280" ry="75" fill="url(#sunsetGlow)" />
+    <ellipse cx="1980" cy="120" rx="250" ry="65" fill="#FFFFFF" />
+    <ellipse cx="2320" cy="110" rx="210" ry="60" fill="url(#sunsetGlow)" />
+  </g>
+</svg>

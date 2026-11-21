@@ -1,1 +1,636 @@
-/* You can add global styles to this file, and also import other style files */
+/* ==========================================================================
+   MADHURA BUILDERS & ARCHITECTS — GLOBAL ARCHITECTURAL DESIGN SYSTEM
+   Palette derived authentically from extracted company logo & identity:
+   - Primary: Deep Architectural Royal Navy (#0B2B63)
+   - Secondary: Vibrant Construction Vermilion / Orange (#EB5A1E)
+   - Accent: Warm Architectural Ochre / Amber (#F59E0B)
+   - Crisp Background: Clean Slate White (#F8FAFC, #FFFFFF)
+   - Cinematic Dark: Night Navy (#081325)
+   - High Contrast Body Text: Deep Slate Charcoal (#0F172A)
+   ========================================================================== */
+
+:root {
+  --color-primary: #0B2B63;
+  --color-primary-dark: #081325;
+  --color-primary-light: #153E8A;
+  
+  --color-secondary: #EB5A1E;
+  --color-secondary-dark: #D9480C;
+  --color-secondary-light: #FF7A3D;
+
+  --color-accent: #F59E0B;
+  --color-accent-light: #FBBF24;
+  --color-accent-dark: #D97706;
+
+  /* Backward-compatible alias for existing components */
+  --color-gold: #EB5A1E;
+  --color-gold-light: #FF7A3D;
+  --color-gold-dark: #D9480C;
+
+  --color-bg-light: #F8FAFC;
+  --color-bg-white: #FFFFFF;
+  --color-bg-dark: #081325;
+  --color-text-dark: #0F172A;
+  --color-text-muted: #64748B;
+  --color-border: #E2E8F0;
+  --color-border-dark: rgba(11, 43, 99, 0.15);
+
+  --font-heading: 'Outfit', 'Montserrat', 'Playfair Display', 'Noto Sans Tamil', system-ui, sans-serif;
+  --font-body: 'Inter', 'Noto Sans Tamil', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Inter', monospace;
+  --font-tamil: 'Noto Sans Tamil', 'Inter', system-ui, sans-serif;
+
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.lang-tamil {
+  font-family: var(--font-tamil);
+  letter-spacing: normal;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-tamil);
+    line-height: 1.35;
+    letter-spacing: normal;
+  }
+
+  /* Compact button and badge padding for Tamil text expansion */
+  .tab-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+    letter-spacing: 0;
+  }
+
+  .section-tag {
+    letter-spacing: 0.5px;
+  }
+
+  .btn-primary, .btn-secondary {
+    letter-spacing: 0.2px;
+  }
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  background-color: var(--color-bg-light);
+  color: var(--color-text-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--color-bg-light);
+  color: var(--color-text-dark);
+  font-size: 15px;
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+p {
+  color: var(--color-text-muted);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* Section Header Shared Style with Trending Dynamic Kinetic Animations */
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #EB5A1E 0%, #FF8A50 35%, #F59E0B 70%, #EB5A1E 100%);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: kineticShimmerFlow 5s linear infinite;
+  margin-bottom: 12px;
+  position: relative;
+  transition: letter-spacing 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    letter-spacing: 3.5px;
+  }
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 22px;
+    height: 2.5px;
+    background: linear-gradient(90deg, #EB5A1E, #F59E0B);
+    border-radius: 2px;
+    animation: lineGlowSweep 3s ease-in-out infinite;
+  }
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+  line-height: 1.16;
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.35s ease;
+
+  &:hover {
+    transform: translateX(4px);
+    text-shadow: 0 4px 20px rgba(11, 43, 99, 0.18);
+  }
+}
+
+.section-subtitle {
+  font-size: 16px;
+  color: var(--color-text-muted);
+  max-width: 640px;
+  line-height: 1.7;
+  transition: color 0.3s ease;
+}
+
+/* Luxury Buttons with High-Impact Hover Animations */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background-color: var(--color-gold);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1px solid var(--color-gold);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(235, 90, 30, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #FFFFFF;
+  transform: translateY(-4px) scale(1.025);
+  box-shadow: 0 14px 30px -6px rgba(11, 43, 99, 0.5), 0 0 0 2px rgba(235, 90, 30, 0.3);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background-color: transparent;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 2px solid var(--color-primary);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  transform: translateY(-4px) scale(1.025);
+  box-shadow: 0 14px 30px -6px rgba(11, 43, 99, 0.4);
+}
+
+.btn-outline-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: transparent;
+  color: var(--color-gold);
+  border: 2px solid var(--color-gold);
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-outline-gold:hover {
+  background-color: var(--color-gold);
+  color: #FFFFFF;
+  transform: translateY(-4px) scale(1.025);
+  box-shadow: 0 12px 28px -6px rgba(235, 90, 30, 0.5);
+}
+
+/* Architectural Subtle Grids & Borders with Dynamic Elevation */
+.arch-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.arch-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 24px 48px -12px rgba(11, 43, 99, 0.16), 0 0 0 1.5px rgba(235, 90, 30, 0.4);
+  border-color: rgba(235, 90, 30, 0.4);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #E8E8E3;
+}
+::-webkit-scrollbar-thumb {
+  background: #172D35;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C49A58;
+}
+
+/* Floating WhatsApp Button with Continuous Radar Pulse */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background-color: #25D366;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  animation: waFloatBounce 3s ease-in-out infinite;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid #25D366;
+    animation: waPulseRing 2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  }
+}
+
+.floating-whatsapp:hover {
+  transform: scale(1.1) translateY(-4px);
+  box-shadow: 0 14px 32px rgba(37, 211, 102, 0.55);
+  color: white;
+}
+
+.floating-whatsapp svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes waPulseRing {
+  0% { transform: scale(0.95); opacity: 0.85; }
+  70% { transform: scale(1.4); opacity: 0; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+
+@keyframes waFloatBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@media (max-width: 640px) {
+  .floating-whatsapp {
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* ==========================================================================
+   PREMIUM MICRO-ANIMATION SUITE
+   ========================================================================== */
+
+/* Button Shimmer Light Sweep Effect */
+.btn-primary, .btn-gold, .btn-channel, .btn-quote, .btn-directions-banner, .btn-location-directions {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -70%;
+    width: 45%;
+    height: 200%;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.35) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(25deg);
+    pointer-events: none;
+    transition: none;
+  }
+
+  &:hover::after {
+    left: 130%;
+    transition: left 0.75s ease-in-out;
+  }
+}
+
+/* Status Pulsing Dot (For Ongoing Works & Live Indicators) */
+.status-pulse-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10B981;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: statusPulse 1.8s infinite;
+}
+
+@keyframes statusPulse {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* Keyframes for Smooth Page Animations */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spinDiamond {
+  0% { transform: rotate(45deg); }
+  50% { transform: rotate(225deg) scale(1.2); }
+  100% { transform: rotate(405deg); }
+}
+
+/* Global Tactile Button Active Click State */
+button:active, .btn-primary:active, .btn-secondary:active, .btn-outline-gold:active, .btn-gold:active {
+  transform: scale(0.97) !important;
+}
+
+/* Hover Lift Global Class */
+.hover-lift {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px -10px rgba(11, 43, 99, 0.16), 0 0 0 2px rgba(235, 90, 30, 0.35);
+  }
+}
+
+.anim-fade-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.anim-float {
+  animation: floatY 4s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   TRENDING TYPOGRAPHY ANIMATION SUITE (2024–2026 Architectural Kinetic Motion)
+   ========================================================================== */
+
+/* 1. Kinetic Metallic Shimmer & Gradient Flow */
+@keyframes kineticShimmerFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes textAuraGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(235, 90, 30, 0.45));
+  }
+  50% {
+    filter: drop-shadow(0 0 22px rgba(235, 90, 30, 0.8));
+  }
+}
+
+@keyframes lineGlowSweep {
+  0% { transform: scaleX(0.7); opacity: 0.65; }
+  50% { transform: scaleX(1.35); opacity: 1; }
+  100% { transform: scaleX(0.7); opacity: 0.65; }
+}
+
+@keyframes floatNumber {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes titleHoverGlide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(5px); }
+}
+
+@keyframes textBreath {
+  0%, 100% { opacity: 0.92; }
+  50% { opacity: 1; }
+}
+
+/* 2. Global Scroll-Driven Typography & Section Entrance Animation */
+.font-anim-target {
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  filter: blur(5px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) var(--font-anim-delay, 0s),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) var(--font-anim-delay, 0s),
+              filter 0.85s cubic-bezier(0.16, 1, 0.3, 1) var(--font-anim-delay, 0s);
+  will-change: transform, opacity, filter;
+}
+
+.font-anim-target.font-anim-visible {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+  filter: blur(0) !important;
+}
+
+.font-anim-target.font-anim-visible.section-title,
+.font-anim-target.font-anim-visible.page-title {
+  animation: fontKineticReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--font-anim-delay, 0s) both;
+}
+
+@keyframes fontKineticReveal {
+  0% {
+    letter-spacing: -1.2px;
+  }
+  100% {
+    letter-spacing: -0.3px;
+  }
+}
+
+/* 3. Stat Numbers Kinetic Shimmer & Dynamic Elevation */
+.stat-number {
+  font-size: clamp(2.2rem, 3.8vw, 3.5rem);
+  font-weight: 900;
+  display: inline-block;
+  background: linear-gradient(135deg, #0B2B63 0%, #EB5A1E 45%, #F59E0B 80%, #EB5A1E 100%);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: kineticShimmerFlow 6s linear infinite, floatNumber 4s ease-in-out infinite;
+  filter: drop-shadow(0 4px 12px rgba(235, 90, 30, 0.3));
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
+
+  &:hover {
+    transform: scale(1.1) translateY(-4px);
+    filter: drop-shadow(0 8px 24px rgba(235, 90, 30, 0.65));
+  }
+}
+
+.stat-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-primary);
+  margin-top: 6px;
+  transition: letter-spacing 0.3s ease, color 0.3s ease;
+}
+
+.intro-stat-card:hover .stat-label {
+  letter-spacing: 2px;
+  color: var(--color-secondary);
+}
+
+/* 4. Interactive Card Titles with Animated Gradient Underline Sweeps */
+.service-card-title, .project-title, .why-card h3, .v-title, .visual-label {
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #EB5A1E, #F59E0B);
+    transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 2px;
+  }
+}
+
+.service-card:hover .service-card-title,
+.project-card:hover .project-title,
+.why-card:hover h3,
+.video-home-card:hover .v-title {
+  color: #EB5A1E;
+  transform: translateX(4px);
+
+  &::after {
+    width: 100%;
+  }
+}
+
+/* 5. Glowing Text Highlight Utility Classes */
+.text-shimmer-gold {
+  background: linear-gradient(135deg, #EB5A1E 0%, #FF8A50 25%, #F59E0B 50%, #FF6F35 75%, #EB5A1E 100%);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: kineticShimmerFlow 4s linear infinite;
+  display: inline-block;
+}
+
+.text-aura {
+  animation: textAuraGlow 3s ease-in-out infinite;
+}
+
+/* 6. Refined Tamil Typography Spacing & Flow */
+body.lang-tamil {
+  .section-title {
+    line-height: 1.25;
+    letter-spacing: 0;
+  }
+  .stat-label {
+    letter-spacing: 0.5px;
+    font-size: 13.5px;
+  }
+  .section-tag {
+    letter-spacing: 1.5px;
+  }
+}
+

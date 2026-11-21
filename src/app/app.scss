@@ -1,0 +1,13 @@
+app-header {
+  position: relative;
+  z-index: 999999 !important;
+  display: block;
+}
+
+.main-wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
